@@ -1,0 +1,6 @@
+data log--------
+Application Version:Version 1.0
+Spring Boot Version: ${spring-boot.version}
+Spring Boot formatted:Version: ${spring-boot.formatted-version}
+---------------------------------------------------------------------
+Welcome to Spring Boot App
