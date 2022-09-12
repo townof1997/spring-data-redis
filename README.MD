@@ -24,6 +24,23 @@
 10,用Redis存储数据要序列化
 
 使用Redis作为mybatis的二级缓存
-1，mybatis_config.xml：<setting name="cacheEnabled" value="true">
-2,Mapper对应的sql映射文件中加一个<cache type ="xx.xx.MyRedisCache">
-3,实现序列化接口；
+    a，mybatis_config.xml：<setting name="cacheEnabled" value="true">
+    b,Mapper对应的sql映射文件中加一个<cache type ="xx.xx.MyRedisCache">
+    c,实现序列化接口；
+11,实现序列化接口
+12,实现 Cache类    实现Redis数据库作为MyBatis的二级缓存
+13,finalize方法的理解
+    finalize()是Object类里的protected类型的方法，子类可通过覆盖这个方法来实现回收前的资源清理工作，和这个方法相关的流程如下所述
+    1，Java虚拟机一旦通过刚才提到的“根可达算法”,判断出某个对象处于可回收状态时，会判断该对象是否重写了Object类的finalize()方法，如果没有，则直接回收；
+    2，如果重写了finalize()方法，而且未执行过该方法，则把该对象放入F-Queue队列，另一个线程会定时遍历F-Queue队列，并执行该队列中各对象的finalize()方法。
+    3，finalize方法执行完毕后，GC会再次判断该对象是否可被回收，如果可以，则进行回收，如果此刻该对象上有强引用，则该"对象复活"，即处于"不可回收状态"；
+
+Full GC出现的情况
+1，年老代被写满，
+2，持久代被写满
+3，程序员显式的调用System.gc();    
+根可达算法；
+1，虚拟机栈中引用的对象
+2，方法区中静态属性引用的对象
+3，方法区中常量引用的对象
+4，本地方法栈中引用的对象
