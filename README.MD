@@ -48,3 +48,20 @@
 14,synchronized 可以锁方法，但不可以锁住业务逻辑
     比如张三登录，取钱，登出，李四在张三登录期间不能登录;
 15,内部内中调用外部类的参数或变量，需要加final,因为不能保证内部类运行时，外部类是或否被回收，加上final放在常量池中
+16,volatile ,不能保证原子性,不能解决数据不一致的问题,可以保证数据同步
+    1,防止指令重排;2,直接从主存中读取数据
+    a、保证可见性；
+    b、防止指令重排；
+    c、但是不保证原子性；
+    
+17,ThreadLocal
+
+18,ReentrantLock 可重复锁;
+    解决了14 可以锁住业务的问题
+    acc.lockAccount();
+    acc.login();
+    acc.add();
+    acc.logout();
+    acc.unLockAccount();
+19,Condition 线程间通讯
+20,Semaphore 管理多线程之间的竞争
